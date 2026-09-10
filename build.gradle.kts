@@ -1,6 +1,7 @@
 // Gradle build file with plugins and dependencies pinned to explicit versions
 
 plugins {
+    groovy
     kotlin("jvm") version "2.2.20-Beta2"
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("com.github.ben-manes.versions") version "0.52.0"
@@ -18,6 +19,10 @@ dependencies {
     implementation("org.apache.commons:commons-text:1.14.0")
     implementation("org.slf4j:slf4j-api:2.1.0-alpha1")
     implementation("org.hsqldb:hsqldb:2.7.4")
+
+    testImplementation(localGroovy())
+    testImplementation(platform("org.junit:junit-bom:5.10.2"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
 tasks.test {
